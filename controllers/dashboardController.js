@@ -43,18 +43,18 @@ export const weburlsController = async (req, res) => {
 
 export const getWeburlsController=async(req, res)=>{
   try {
-      const reports= await ReportModel.find({}).limit(3)
+      const reports= await ReportModel.find({})
       
       res.status(200).json({
           success:true,
-          message:"all catagories list",
+          message:"all report list",
           reports
       })
       
   } catch (error) {
       console.log(error)
       res.status(500).json({
-          message:"error while getting all catagories"
+          message:"error while getting all reports"
       })
   }
 }
