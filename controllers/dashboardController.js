@@ -4,7 +4,7 @@ import ReportModel from "../models/report.model.js";
 export const weburlsController = async (req, res) => {
     
   try {
-      const { url, username, active } = req.body;
+      const { url, username, active, count } = req.body;
 
     // Check if both url and username are provided
     if (!url || !username) {
@@ -18,7 +18,8 @@ export const weburlsController = async (req, res) => {
     const newReport = new ReportModel({
       username,
       url,
-      active
+      active,
+      count
     });
 
     // Save the new report to the database

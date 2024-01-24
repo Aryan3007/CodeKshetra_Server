@@ -12,7 +12,11 @@ const reportSchema = new mongoose.Schema({
   active:{
     type : Boolean ,
     default : true
-  }
+  },
+  count: {
+    type: String,
+    required: true,
+  },
 
 }, { timestamps: true });
 
