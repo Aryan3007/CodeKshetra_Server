@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import dashboardRoute from "./routes/dashboardRoute.js";
+import authRouter from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+// import postRoutes from "./routes/postRoutes.js";
 
 
 dotenv.config();
@@ -27,7 +30,9 @@ const connectDB = async () => {
 connectDB();
 
 //app routes
+app.use('/auth', authRouter)
 app.use("/dashboard", dashboardRoute)
+app.use('/post', postRoutes)
 
 const PORT = process.env.PORT;
 

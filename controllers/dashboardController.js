@@ -59,3 +59,35 @@ export const getWeburlsController=async(req, res)=>{
       })
   }
 }
+
+
+export const deleteWeburlsController = async (req, res) => {
+  
+  const { id } = req.body;
+try {
+  const post = await ReportModel.findById(id);
+
+  if (!post) {
+    return res.status(404).json({
+      success: false,
+      message: "post with given id not found",
+    });
+  }
+
+  await ReportModel.findByIdAndDelete(id);
+
+  return res.status(200).json({
+    success: true,
+    message: " post deleted",
+  });
+} catch (error) {
+  console.log(error);
+
+  return res.status(500).json({
+    success: false,
+    message: "post not found",
+    error: error,
+  });
+}
+
+};
